@@ -43,7 +43,7 @@ export default function Navigation(props) {
           <LinksContainer isActive={activeNavbar} />
         </Toolbar>
       </AppBar>
-      <div>{props.children}</div>
+      {props.children}
     </React.Fragment>
   );
 }

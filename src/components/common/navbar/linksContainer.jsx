@@ -14,17 +14,23 @@ const LinkButtons = styled(Button)`
   text-transform: none;
   border-radius: 0;
   min-width: 100px;
-  background-color: ${(props) =>
-    props.isActive ? colors.black : "transparent"};
+  background-color: ${(props) => (props.isActive ? colors.black : "white")};
   color: ${(props) => (props.isActive ? colors.white : colors.black)};
   font-weight: 700;
   transition: ease-out 0.3s;
+  &:hover {
+    background-color: ${(props) =>
+      props.isActive ? colors.black : colors.gray};
+    color: white;
+  }
 `;
 
 function LinksContainer(props) {
   // set type of navbar
   const type =
-    props.width === "sm" ? "linkContainerVertical" : "linkContainerHorizontal";
+    props.width === "sm" || props.width === "xs"
+      ? "linkContainerVertical"
+      : "linkContainerHorizontal";
   const appBarClasses = appBarStyles();
   const location = useLocation();
   const isActive = props.isActive;
