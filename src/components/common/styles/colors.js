@@ -3,4 +3,5 @@ export const colors = {
   gray: "#66666e",
   manatee: "#9999a1",
   white: "#e6e6e9",
+  milk: "#ffffff",
 };

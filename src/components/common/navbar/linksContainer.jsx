@@ -19,12 +19,19 @@ const LinkButtons = styled(Button)`
   color: ${(props) => (props.isActive ? colors.white : colors.black)};
   font-weight: 700;
   transition: ease-out 0.3s;
+  &:hover {
+    background-color: ${(props) =>
+      props.isActive ? colors.black : colors.gray};
+    color: white;
+  }
 `;
 
 function LinksContainer(props) {
   // set type of navbar
   const type =
-    props.width === "sm" ? "linkContainerVertical" : "linkContainerHorizontal";
+    props.width === "sm" || props.width === "xs"
+      ? "linkContainerVertical"
+      : "linkContainerHorizontal";
   const appBarClasses = appBarStyles();
   const location = useLocation();
   const isActive = props.isActive;
@@ -91,6 +98,7 @@ const appBarStyles = makeStyles((theme) => ({
     },
   },
   link: {
+    backgroundColor: "transparent",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
