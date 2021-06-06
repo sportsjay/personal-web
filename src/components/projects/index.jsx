@@ -16,9 +16,6 @@ export default function ProjectsPage(props) {
         <ProjectContainer />
         <ProjectContainer />
         <ProjectContainer />
-        <ProjectContainer />
-        <ProjectContainer />
-        <ProjectContainer />
       </div>
     </div>
   );

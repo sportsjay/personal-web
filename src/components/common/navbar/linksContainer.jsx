@@ -14,7 +14,8 @@ const LinkButtons = styled(Button)`
   text-transform: none;
   border-radius: 0;
   min-width: 100px;
-  background-color: ${(props) => (props.isActive ? colors.black : "white")};
+  background-color: ${(props) =>
+    props.isActive ? colors.black : "transparent"};
   color: ${(props) => (props.isActive ? colors.white : colors.black)};
   font-weight: 700;
   transition: ease-out 0.3s;
@@ -97,6 +98,7 @@ const appBarStyles = makeStyles((theme) => ({
     },
   },
   link: {
+    backgroundColor: "transparent",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },

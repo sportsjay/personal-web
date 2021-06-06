@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { withWidth, makeStyles, Toolbar } from "@material-ui/core";
+import { withWidth, makeStyles } from "@material-ui/core";
 
 // import icons
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -8,7 +8,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 // import components
 import ProjectCard from "./projectCard";
-import { HeaderText, colors } from "../common";
+import { HeaderText, colors, Gutter } from "../common";
 
 function RightButton(props) {
   const classes = contentButtonStyles();
@@ -37,12 +37,6 @@ function LeftButton(props) {
     </div>
   );
 }
-
-function Gutter(props) {
-  const projectClasses = projectStyles();
-  return <Toolbar {...props} className={projectClasses.gutter} />;
-}
-
 function ProjectContainer(props) {
   const data = [0, 1, 2, 3];
   const maxCards = {
@@ -52,6 +46,7 @@ function ProjectContainer(props) {
     lg: 5,
   };
   const width = props.width;
+  const title = props.title || "No Title";
   const projectClasses = projectStyles();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [projects, setProjects] = useState(
@@ -77,7 +72,7 @@ function ProjectContainer(props) {
     <React.Fragment>
       <section className={projectClasses.projectsSection}>
         <HeaderText className={projectClasses.projectHeader}>
-          School Project
+          {title}
         </HeaderText>
         <div className={projectClasses.projectsContainer}>
           {projects.map((_) => (
@@ -111,10 +106,6 @@ const projectStyles = makeStyles((theme) => ({
     backgroundColor: colors.milk,
     padding: theme.spacing(2),
     position: "relative",
-  },
-  gutter: {
-    maxHeight: theme.spacing(2),
-    minHeight: theme.spacing(2),
   },
   projectHeader: { marginBottom: theme.spacing(1) },
   projectsContainer: {
