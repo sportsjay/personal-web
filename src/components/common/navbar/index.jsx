@@ -28,7 +28,7 @@ export default function Navigation(props) {
 
   return (
     <React.Fragment>
-      <AppBar className={appBarClasses.root} variant="outlined">
+      <AppBar className={appBarClasses.root}>
         <Toolbar className={appBarClasses.toolbar}>
           <div className={appBarClasses.titleContainer}>
             <Text variant="h5" className={appBarClasses.titleText}>
@@ -50,7 +50,7 @@ export default function Navigation(props) {
 
 const appBarStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "transparent",
+    backgroundColor: colors.milk,
     borderWidth: 0,
   },
   toolbar: {
