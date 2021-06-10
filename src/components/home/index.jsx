@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles, Toolbar } from "@material-ui/core";
-import { colors, HeaderText, Text } from "../common";
+
+// import colors
+import { colors, iconPillColor } from "../common";
+
+// import components
+import { PillContainer, HeaderText, Text } from "../common";
+import HomeContent from "./content";
 
 export default function HomePage(props) {
-  const homePageClasses = homePageStyle();
+  const homePageClasses = homePageStyles();
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
@@ -22,7 +28,7 @@ export default function HomePage(props) {
           className={homePageClasses.headerTitle}
           style={{ fontWeight: "800" }}
         >
-          Home, Hello There!
+          Oh, Hello There!
         </HeaderText>
         <div
           className={homePageClasses.headerTitleUnderline1}
@@ -35,7 +41,7 @@ export default function HomePage(props) {
       </header>
       <div
         className={homePageClasses.body}
-        style={{ transform: `translateX(${startAnimation ? 0 : -100}%)` }}
+        style={{ opacity: startAnimation ? 1 : 0 }}
       >
         <section className={homePageClasses.personalContentContainer}>
           <div className={homePageClasses.personalContentBackground} />
@@ -44,62 +50,93 @@ export default function HomePage(props) {
               <HeaderText className={clsx(homePageClasses.textColor)}>
                 About Me
               </HeaderText>
-              <div className={homePageClasses.animatedCircle} />
-              <div
-                className={homePageClasses.animatedCircle}
-                style={{ animationDelay: "0.3s" }}
-              />
-              <div
-                className={homePageClasses.animatedCircle}
-                style={{ animationDelay: "0.6s" }}
-              />
+              <div style={{ display: "flex" }}>
+                <div className={homePageClasses.animatedCircle} />
+                <div
+                  className={homePageClasses.animatedCircle}
+                  style={{ animationDelay: "0.3s" }}
+                />
+                <div
+                  className={homePageClasses.animatedCircle}
+                  style={{ animationDelay: "0.6s" }}
+                />
+              </div>
             </header>
             <div className={homePageClasses.personalContentText}>
               <Text
                 style={{ textAlign: "right" }}
                 className={clsx(homePageClasses.textColor)}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-                laboriosam. Excepturi, eaque voluptatem dicta commodi magnam,
-                reprehenderit nesciunt ad obcaecati quisquam quas nam!
-                Perferendis ipsum explicabo at consectetur deleniti recusandae.
+                <li>
+                  I am a <strong>Software Engineer</strong> at heart with a
+                  self-driven motivation to learn, share, and embrace new
+                  emerging technologies.
+                </li>
+              </Text>
+              <Text
+                style={{ textAlign: "right" }}
+                className={clsx(homePageClasses.textColor)}
+              >
+                <li>
+                  4th year student, majoring in{" "}
+                  <b>Electrical and Electronic Engineering</b> specializing in{" "}
+                  <b>Computer Engineering</b> at Nanyang Technological
+                  University, Singapore.
+                </li>
               </Text>
             </div>
           </div>
           <div className={homePageClasses.personalContent2}>
             <header className={homePageClasses.personalContentHeader}>
               <HeaderText className={clsx(homePageClasses.textColor)}>
-                About Me
+                Expertise
               </HeaderText>
-              <div
-                className={homePageClasses.animatedCircle}
-                style={{ animationDelay: "0.9s" }}
-              />
-              <div
-                className={homePageClasses.animatedCircle}
-                style={{ animationDelay: "1.3s" }}
-              />
-              <div
-                className={homePageClasses.animatedCircle}
-                style={{ animationDelay: "1.6s" }}
-              />
+              <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+                <div
+                  className={homePageClasses.animatedCircle}
+                  style={{ animationDelay: "0.9s" }}
+                />
+                <div
+                  className={homePageClasses.animatedCircle}
+                  style={{ animationDelay: "1.3s" }}
+                />
+                <div
+                  className={homePageClasses.animatedCircle}
+                  style={{ animationDelay: "1.6s" }}
+                />
+              </div>
             </header>
             <div className={homePageClasses.personalContentText}>
-              <Text className={clsx(homePageClasses.textColor)}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-                laboriosam. Excepturi, eaque voluptatem dicta commodi magnam,
-                reprehenderit nesciunt ad obcaecati quisquam quas nam!
-                Perferendis ipsum explicabo at consectetur deleniti recusandae.
-              </Text>
+              <PillContainer
+                text="react"
+                backgroundColor={iconPillColor.react.bg}
+                fontColor={iconPillColor.react.fc}
+              />
+              <PillContainer
+                text="node.js"
+                backgroundColor={iconPillColor["node.js"].bg}
+                fontColor={iconPillColor["node.js"].fc}
+              />
+              <PillContainer
+                text="express"
+                backgroundColor={iconPillColor.express.bg}
+                fontColor={iconPillColor.express.fc}
+              />
+              <PillContainer
+                text="mongodb"
+                backgroundColor={iconPillColor.mongodb.bg}
+                fontColor={iconPillColor.mongodb.fc}
+              />
             </div>
           </div>
         </section>
+        <HomeContent startAnimation={startAnimation} />
       </div>
     </div>
   );
 }
 
-const homePageStyle = makeStyles((theme) => ({
+const homePageStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     minHeight: "100vh",
@@ -121,17 +158,24 @@ const homePageStyle = makeStyles((theme) => ({
       width: "100%",
       paddingTop: theme.spacing(2),
     },
+    "&:hover": {
+      "& $headerTitleUnderline1": {
+        transform: "translateY(-10%)",
+        borderBottomColor: colors.blue2,
+        filter: "brightness(60%)",
+      },
+      "& $headerTitleUnderline2": {
+        transform: "translateX(-6%)",
+        borderTopColor: colors.black,
+      },
+      transition: "ease-out 0.2s",
+      color: colors.white,
+    },
   },
   headerTitle: {
     paddingLeft: theme.spacing(4),
     position: "relative",
     zIndex: 1,
-    "&:hover": {
-      "& $headerTitleUnderline1": {
-        borderImage:
-          "linear-gradient(to left, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
-      },
-    },
   },
   headerTitleUnderline1: {
     borderBottom: `50px solid ${colors.manatee}`,
@@ -177,9 +221,18 @@ const homePageStyle = makeStyles((theme) => ({
   },
   body: {
     transition: "ease-out 1s",
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
     transitionDelay: "1s",
     boxSizing: "border-box",
-    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      padding: 0,
+    },
   },
   personalContentContainer: {
     display: "flex",
@@ -189,14 +242,16 @@ const homePageStyle = makeStyles((theme) => ({
     width: "50%",
     minHeight: "60vh",
     boxSizing: "border-box",
-    backgroundColor: colors.white,
+    backgroundColor: colors.milk,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
     marginTop: theme.spacing(4),
     padding: theme.spacing(4),
     overflow: "hidden",
+    boxShadow:
+      "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
     [theme.breakpoints.down("md")]: {
-      width: "70%",
+      width: "60%",
     },
     [theme.breakpoints.down("sm")]: {
       width: "100%",
@@ -245,7 +300,7 @@ const homePageStyle = makeStyles((theme) => ({
     fontSize: "24pt",
     [theme.breakpoints.down("sm")]: {
       minWidth: 120,
-      fontSize: "14pt",
+      fontSize: "20pt",
     },
     position: "relative",
     zIndex: 1,
@@ -254,7 +309,10 @@ const homePageStyle = makeStyles((theme) => ({
     minWidth: "50%",
     maxWidth: "50%",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "10pt",
+      fontSize: "12pt",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "9pt",
     },
     position: "relative",
     zIndex: 1,
