@@ -16,7 +16,7 @@ function Gutter(props) {
 // ============================= //
 function PillContainer(props) {
   const pillContainerClasses = pillContainerStyles();
-  const { icon, text, backgroundColor, fontColor } = props;
+  const { icon, text, backgroundColor, fontColor, shadow } = props;
   return (
     <div
       {...props}
@@ -25,6 +25,9 @@ function PillContainer(props) {
         ...props.style,
         backgroundColor: backgroundColor,
         color: fontColor,
+        boxShadow: shadow
+          ? "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+          : "none",
       }}
     >
       <img
@@ -67,8 +70,6 @@ const pillContainerStyles = makeStyles((theme) => ({
     height: 30,
     borderRadius: 5,
     margin: 2,
-    boxShadow:
-      "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px",
     padding: theme.spacing(1),
     boxSizing: "border-box",
     cursor: "pointer",

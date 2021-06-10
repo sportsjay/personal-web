@@ -109,21 +109,25 @@ export default function HomePage(props) {
             <div className={homePageClasses.personalContentText}>
               <PillContainer
                 text="react"
+                shadow={true}
                 backgroundColor={iconPillColor.react.bg}
                 fontColor={iconPillColor.react.fc}
               />
               <PillContainer
                 text="node.js"
+                shadow={true}
                 backgroundColor={iconPillColor["node.js"].bg}
                 fontColor={iconPillColor["node.js"].fc}
               />
               <PillContainer
                 text="express"
+                shadow={true}
                 backgroundColor={iconPillColor.express.bg}
                 fontColor={iconPillColor.express.fc}
               />
               <PillContainer
                 text="mongodb"
+                shadow={true}
                 backgroundColor={iconPillColor.mongodb.bg}
                 fontColor={iconPillColor.mongodb.fc}
               />
