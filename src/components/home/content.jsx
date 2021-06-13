@@ -107,7 +107,7 @@ export default function HomeContent(props) {
     <section
       className={designContentClasses.root}
       style={{
-        transition: "ease-out 5s",
+        transition: "opacity 5s",
         transitionDelay: "2s",
         opacity: startAnimation ? 1 : 0,
       }}
@@ -222,7 +222,7 @@ const designContentStyles = makeStyles((theme) => ({
       transform: "translateY(0px)",
     },
     "50%": {
-      transform: "translateY(-20px)",
+      transform: "translateY(20px)",
     },
     "100%": {
       transform: "translateY(0px)",
