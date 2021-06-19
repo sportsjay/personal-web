@@ -48,7 +48,11 @@ function StyledButton(props) {
     normal: clsx(classes1.root, classes1.text),
     pill: clsx(classes2.root, classes2.text),
   };
-  return <NewButton className={className[variant]}>{props.children}</NewButton>;
+  return (
+    <NewButton className={className[variant]} {...props}>
+      {props.children}
+    </NewButton>
+  );
 }
 
 // ============================= //
@@ -124,16 +128,20 @@ const buttonStyles1 = makeStyles((theme) => ({
 const buttonStyles2 = makeStyles((theme) => ({
   root: {
     borderRadius: 40,
-    backgroundColor: "inherit",
-    border: `solid 2px ${colors.manatee}`,
+    backgroundColor: colors.manatee,
+    border: `solid 2px ${colors.white}`,
     "&:hover": {
-      boxShadow: `0px 0px 10px ${colors.white}`,
+      boxShadow: `0px 0px 10px ${colors.milk}`,
       backgroundColor: colors.black,
     },
   },
   text: {
-    fontWeight: "500",
-    color: colors.white,
+    fontWeight: "700",
+    color: colors.black,
+    textTransform: "capitalize",
+    "&:hover": {
+      color: colors.white,
+    },
   },
 }));
 

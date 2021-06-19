@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
-import { makeStyles, Toolbar, Divider } from "@material-ui/core";
+import { makeStyles, Toolbar } from "@material-ui/core";
 
 // import colors
 import { colors, iconPillColor } from "../common";
 
 // import components
-import {
-  PillContainer,
-  HeaderText,
-  Text,
-  StyledCard,
-  StyledButton,
-} from "../common";
+import { PillContainer, HeaderText, Text } from "../common";
 import HomeContent from "./content";
+import AboutMeCard from "./aboutMe";
 
 export default function HomePage(props) {
   const homePageClasses = homePageStyles();
   const aboutMeClasses = aboutMeStyles();
-  const cardClasses = cardStyles();
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
@@ -153,41 +147,26 @@ export default function HomePage(props) {
         </header>
         <Toolbar />
         <div className={aboutMeClasses.body}>
-          <StyledCard
-            borderRadius={10}
-            className={cardClasses.root}
-            bgColor={colors.gray}
-            width="320px"
-            height="400px"
-          >
-            <header className={cardClasses.header}>
-              <img
-                className={cardClasses.imageHeader}
-                src="github.png"
-                alt="Github"
-              />
-              <HeaderText>Test</HeaderText>
-            </header>
-            <div className={cardClasses.body}>
-              <Text>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
-              </Text>
-            </div>
-            <footer className={cardClasses.footer}>
-              <StyledButton>Test</StyledButton>
-            </footer>
-          </StyledCard>
-          <StyledCard
-            className={cardClasses.root}
-            bgColor={colors.gray}
-            width="320px"
-            height="400px"
+          <AboutMeCard
+            title="Github"
+            subtitle="Come down to my Github to checkout my recent projects on full-stack
+          development and mobile app development."
+            link="https://github.com/sportsjay"
           />
-          <StyledCard
-            className={cardClasses.root}
-            bgColor={colors.gray}
-            width="320px"
-            height="400px"
+          <AboutMeCard
+            title="LinkedIn"
+            subtitle="Connect with me through LinkedIn, I enjoy chatting with new people with different interests including, music, tech, weird humours, BASKETBALL!"
+            link="https://www.linkedin.com/in/jason-nathaniel-ab53a2193/"
+          />
+          <AboutMeCard
+            title="Hackerrank"
+            subtitle="Here's my spare time hobby, quite a nerd sometimes and I do enjoy some bits of problem solving!"
+            link="https://www.hackerrank.com/jasonnathaniel11"
+          />
+          <AboutMeCard
+            title="Spotify"
+            subtitle="Music, one of the best getaway! I've settled on 4 playlists for you guys to enjoy, making it from the 80's up to the latest hits."
+            link="https://open.spotify.com/embed/playlist/1k2RpXfwO7U0G0pZVjnMfe"
           />
         </div>
       </div>
@@ -434,51 +413,5 @@ const aboutMeStyles = makeStyles((theme) => ({
       flexWrap: "wrap",
       gap: theme.spacing(2),
     },
-  },
-}));
-
-const cardStyles = makeStyles((theme) => ({
-  root: {
-    boxSizing: "border-box",
-    background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-    backgroundSize: "400% 400%",
-    transition: "ease-out 0.4s",
-    "&:hover": {
-      backgroundPosition: "100% 20%",
-      transform: "translateY(-5px)",
-    },
-  },
-  header: {
-    padding: theme.spacing(2),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    boxSizing: "inherit",
-    height: "50%",
-
-    fontSize: "16pt",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "12pt",
-    },
-  },
-  imageHeader: {
-    height: "80%",
-    width: "auto",
-  },
-  body: {
-    padding: theme.spacing(2),
-    height: "20%",
-    boxSizing: "inherit",
-    width: "100%",
-  },
-  footer: {
-    padding: theme.spacing(2),
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    height: "30%",
-    boxSizing: "inherit",
-    width: "100%",
-    backgroundColor: colors.gray,
   },
 }));
