@@ -9,24 +9,18 @@ import { Gutter, HeaderText, Text, PillContainer, StyledCard } from "../common";
 
 export default function ProjectCard(props) {
   const cardClasses = cardStyles();
-  const techStacks = props.techStacks || ["AWS", "react"];
+  const { title, description, techStacks } = props;
   return (
     <div>
       <StyledCard {...props}>
         <div className={cardClasses.topSection}>
           <div className={cardClasses.topSectionBackground} />
-          <CardHeader
-            title={<HeaderText>Project Title {props.id}</HeaderText>}
-            className={cardClasses.cardHeader}
-          />
+          <header className={cardClasses.cardHeader}>
+            {<HeaderText>{title}</HeaderText>}
+          </header>
           <div className={cardClasses.cardContent}>
             <HeaderText>Description</HeaderText>
-            <Text className={cardClasses.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              magnam magni deleniti quas cumque vel suscipit at! Facere, et ad,
-              dolores dolorum eius sed autem distinctio nisi sit similique
-              nihil.
-            </Text>
+            <Text className={cardClasses.description}>{description}</Text>
           </div>
         </div>
         <Divider />
@@ -49,6 +43,13 @@ export default function ProjectCard(props) {
     </div>
   );
 }
+
+ProjectCard.defaultProps = {
+  title: "Project Title",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, maiores laborum enim explicabo quos sequi rem quia soluta tenetur voluptas. Beatae omnis ex reprehenderit praesentium nam ducimus accusantium assumenda facilis",
+  techStacks: ["AWS", "react", "kafka", "kafka"],
+};
 
 const cardStyles = makeStyles((theme) => ({
   topSection: {
@@ -78,16 +79,15 @@ const cardStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     paddingBottom: 0,
+    fontSize: "16pt",
+    padding: theme.spacing(2),
   },
   cardContent: {
     position: "relative",
     padding: theme.spacing(2),
     zIndex: 1,
   },
-  description: {
-    maxHeight: 120,
-    overflow: "auto",
-  },
+  description: { minHeight: 120, maxHeight: 120, overflow: "auto" },
   cardFooter: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),

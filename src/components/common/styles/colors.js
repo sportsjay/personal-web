@@ -22,4 +22,5 @@ export const iconPillColor = {
   mongodb: { bg: "#6cc24a", fc: "#326020" },
   "node.js": { bg: "#6cc24a", fc: "#326020" },
   react: { bg: "#00d8ff", fc: "#005766" },
+  "react-native": { bg: "#00d8ff", fc: "#005766" },
 };

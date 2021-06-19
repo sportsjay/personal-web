@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { withWidth, makeStyles } from "@material-ui/core";
 
 // import components
 import ProjectCard from "./projectCard";
-import { HeaderText, colors, Gutter } from "../common";
+import { HeaderText } from "../common";
+import { colors, Gutter } from "../common";
 function ProjectContainer(props) {
-  const data = [0, 1, 2, 3];
-  const title = props.title || "No Title";
+  const { data, title } = props;
   const projectClasses = projectStyles();
-  const [projects, setProjects] = useState(data);
 
   return (
     <React.Fragment>
@@ -18,8 +17,15 @@ function ProjectContainer(props) {
           {title}
         </HeaderText>
         <div className={projectClasses.projectsContainer}>
-          {projects.map((_) => (
-            <ProjectCard className={projectClasses.project} key={_} id={_} />
+          {data.map((info, _) => (
+            <ProjectCard
+              className={projectClasses.project}
+              key={_}
+              id={_}
+              title={info.title}
+              description={info.description}
+              techStacks={info.techStacks}
+            />
           ))}
         </div>
       </section>
@@ -30,6 +36,11 @@ function ProjectContainer(props) {
 
 ProjectContainer.propTypes = {
   width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
+
+ProjectContainer.defaultProps = {
+  data: [0, 1, 2, 3],
+  title: "No title",
 };
 
 export default withWidth()(ProjectContainer);
