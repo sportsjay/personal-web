@@ -10,7 +10,6 @@ const StyledCard = styled(Card)`
   min-width: 260px;
   width: 300px;
   min-height: 280px;
-  height: 320px;
   border-radius: 0;
   background-color: ${colors.white};
 `;
@@ -49,40 +48,42 @@ export default function ProjectCard(props) {
   const cardClasses = cardStyles();
   const techStacks = props.techStacks || ["AWS", "react"];
   return (
-    <StyledCard {...props}>
-      <div className={cardClasses.topSection}>
-        <div className={cardClasses.topSectionBackground} />
-        <CardHeader
-          title={<HeaderText>Project Title {props.id}</HeaderText>}
-          className={cardClasses.cardHeader}
-        />
-        <div className={cardClasses.cardContent}>
-          <HeaderText>Description</HeaderText>
-          <Text className={cardClasses.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            magnam magni deleniti quas cumque vel suscipit at! Facere, et ad,
-            dolores dolorum eius sed autem distinctio nisi sit similique nihil.
-          </Text>
+    <div>
+      <StyledCard {...props}>
+        <div className={cardClasses.topSection}>
+          <div className={cardClasses.topSectionBackground} />
+          <CardHeader
+            title={<HeaderText>Project Title {props.id}</HeaderText>}
+            className={cardClasses.cardHeader}
+          />
+          <div className={cardClasses.cardContent}>
+            <HeaderText>Description</HeaderText>
+            <Text className={cardClasses.description}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              magnam magni deleniti quas cumque vel suscipit at! Facere, et ad,
+              dolores dolorum eius sed autem distinctio nisi sit similique
+              nihil.
+            </Text>
+          </div>
         </div>
-      </div>
-      <Divider />
-      <footer className={cardClasses.cardFooter}>
-        <Gutter
-          style={{ boxShadow: "rgba(33, 35, 38, 0.1) 0px 10px 10px -10px" }}
-        />
-        <div className={cardClasses.iconsContainer}>
-          {techStacks.map((techStack, idx) => (
-            <PillContainer
-              text={techStack}
-              key={idx * 1000}
-              backgroundColor={iconPillColor[techStack].bg}
-              fontColor={iconPillColor[techStack].fc}
-            />
-          ))}
-        </div>
-        <Gutter />
-      </footer>
-    </StyledCard>
+        <Divider />
+        <footer className={cardClasses.cardFooter}>
+          <Gutter />
+          <div className={cardClasses.iconsContainer}>
+            {techStacks.map((techStack, idx) => (
+              <PillContainer
+                text={techStack}
+                key={idx * 1000}
+                backgroundColor={iconPillColor[techStack].bg}
+                fontColor={iconPillColor[techStack].fc}
+              />
+            ))}
+          </div>
+          <Gutter />
+        </footer>
+      </StyledCard>
+      <Gutter />
+    </div>
   );
 }
 
@@ -127,7 +128,6 @@ const cardStyles = makeStyles((theme) => ({
   cardFooter: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    display: "block",
   },
   iconsContainer: {
     display: "flex",
