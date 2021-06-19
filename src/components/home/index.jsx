@@ -8,9 +8,11 @@ import { colors, iconPillColor } from "../common";
 // import components
 import { PillContainer, HeaderText, Text } from "../common";
 import HomeContent from "./content";
+import AboutMeCard from "./aboutMe";
 
 export default function HomePage(props) {
   const homePageClasses = homePageStyles();
+  const aboutMeClasses = aboutMeStyles();
   const [startAnimation, setStartAnimation] = useState(false);
 
   useEffect(() => {
@@ -21,118 +23,154 @@ export default function HomePage(props) {
   }, []);
 
   return (
-    <div className={homePageClasses.root}>
-      <Toolbar />
-      <header className={homePageClasses.header}>
-        <HeaderText
-          className={homePageClasses.headerTitle}
-          style={{ fontWeight: "800" }}
+    <React.Fragment>
+      <div className={homePageClasses.root}>
+        <Toolbar />
+        <header className={homePageClasses.header}>
+          <HeaderText
+            className={homePageClasses.headerTitle}
+            style={{ fontWeight: "800" }}
+          >
+            Oh, Hello There!
+          </HeaderText>
+          <div
+            className={homePageClasses.headerTitleUnderline1}
+            style={{ width: startAnimation ? "60%" : 0 }}
+          />
+          <div
+            className={homePageClasses.headerTitleUnderline2}
+            style={{ width: startAnimation ? "80%" : 0 }}
+          />
+        </header>
+        <div
+          className={homePageClasses.body}
+          style={{ opacity: startAnimation ? 1 : 0 }}
         >
-          Oh, Hello There!
-        </HeaderText>
-        <div
-          className={homePageClasses.headerTitleUnderline1}
-          style={{ width: startAnimation ? "60%" : 0 }}
-        />
-        <div
-          className={homePageClasses.headerTitleUnderline2}
-          style={{ width: startAnimation ? "80%" : 0 }}
-        />
-      </header>
-      <div
-        className={homePageClasses.body}
-        style={{ opacity: startAnimation ? 1 : 0 }}
-      >
-        <section className={homePageClasses.personalContentContainer}>
-          <div className={homePageClasses.personalContentBackground} />
-          <div className={homePageClasses.personalContent1}>
-            <header className={homePageClasses.personalContentHeader}>
-              <HeaderText className={clsx(homePageClasses.textColor)}>
-                About Me
-              </HeaderText>
-              <div style={{ display: "flex" }}>
-                <div className={homePageClasses.animatedCircle} />
-                <div
-                  className={homePageClasses.animatedCircle}
-                  style={{ animationDelay: "0.3s" }}
+          <section className={homePageClasses.personalContentContainer}>
+            <div className={homePageClasses.personalContentBackground} />
+            <div className={homePageClasses.personalContent1}>
+              <header className={homePageClasses.personalContentHeader}>
+                <HeaderText className={clsx(homePageClasses.textColor)}>
+                  About Me
+                </HeaderText>
+                <div style={{ display: "flex" }}>
+                  <div className={homePageClasses.animatedCircle} />
+                  <div
+                    className={homePageClasses.animatedCircle}
+                    style={{ animationDelay: "0.3s" }}
+                  />
+                  <div
+                    className={homePageClasses.animatedCircle}
+                    style={{ animationDelay: "0.6s" }}
+                  />
+                </div>
+              </header>
+              <div className={homePageClasses.personalContentText}>
+                <Text
+                  style={{ textAlign: "right" }}
+                  className={clsx(homePageClasses.textColor)}
+                >
+                  <li>
+                    I am a <strong>Software Engineer</strong> at heart with a
+                    self-driven motivation to learn, share, and embrace new
+                    emerging technologies.
+                  </li>
+                </Text>
+                <Text
+                  style={{ textAlign: "right" }}
+                  className={clsx(homePageClasses.textColor)}
+                >
+                  <li>
+                    4th year student, majoring in{" "}
+                    <b>Electrical and Electronic Engineering</b> specializing in{" "}
+                    <b>Computer Engineering</b> at Nanyang Technological
+                    University, Singapore.
+                  </li>
+                </Text>
+              </div>
+            </div>
+            <div className={homePageClasses.personalContent2}>
+              <header className={homePageClasses.personalContentHeader}>
+                <HeaderText className={clsx(homePageClasses.textColor)}>
+                  Expertise
+                </HeaderText>
+                <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+                  <div
+                    className={homePageClasses.animatedCircle}
+                    style={{ animationDelay: "0.9s" }}
+                  />
+                  <div
+                    className={homePageClasses.animatedCircle}
+                    style={{ animationDelay: "1.3s" }}
+                  />
+                  <div
+                    className={homePageClasses.animatedCircle}
+                    style={{ animationDelay: "1.6s" }}
+                  />
+                </div>
+              </header>
+              <div className={homePageClasses.personalContentText}>
+                <PillContainer
+                  text="react"
+                  shadow={true}
+                  backgroundColor={iconPillColor.react.bg}
+                  fontColor={iconPillColor.react.fc}
                 />
-                <div
-                  className={homePageClasses.animatedCircle}
-                  style={{ animationDelay: "0.6s" }}
+                <PillContainer
+                  text="node.js"
+                  shadow={true}
+                  backgroundColor={iconPillColor["node.js"].bg}
+                  fontColor={iconPillColor["node.js"].fc}
+                />
+                <PillContainer
+                  text="express"
+                  shadow={true}
+                  backgroundColor={iconPillColor.express.bg}
+                  fontColor={iconPillColor.express.fc}
+                />
+                <PillContainer
+                  text="mongodb"
+                  shadow={true}
+                  backgroundColor={iconPillColor.mongodb.bg}
+                  fontColor={iconPillColor.mongodb.fc}
                 />
               </div>
-            </header>
-            <div className={homePageClasses.personalContentText}>
-              <Text
-                style={{ textAlign: "right" }}
-                className={clsx(homePageClasses.textColor)}
-              >
-                <li>
-                  I am a <strong>Software Engineer</strong> at heart with a
-                  self-driven motivation to learn, share, and embrace new
-                  emerging technologies.
-                </li>
-              </Text>
-              <Text
-                style={{ textAlign: "right" }}
-                className={clsx(homePageClasses.textColor)}
-              >
-                <li>
-                  4th year student, majoring in{" "}
-                  <b>Electrical and Electronic Engineering</b> specializing in{" "}
-                  <b>Computer Engineering</b> at Nanyang Technological
-                  University, Singapore.
-                </li>
-              </Text>
             </div>
-          </div>
-          <div className={homePageClasses.personalContent2}>
-            <header className={homePageClasses.personalContentHeader}>
-              <HeaderText className={clsx(homePageClasses.textColor)}>
-                Expertise
-              </HeaderText>
-              <div style={{ display: "flex", flexDirection: "row-reverse" }}>
-                <div
-                  className={homePageClasses.animatedCircle}
-                  style={{ animationDelay: "0.9s" }}
-                />
-                <div
-                  className={homePageClasses.animatedCircle}
-                  style={{ animationDelay: "1.3s" }}
-                />
-                <div
-                  className={homePageClasses.animatedCircle}
-                  style={{ animationDelay: "1.6s" }}
-                />
-              </div>
-            </header>
-            <div className={homePageClasses.personalContentText}>
-              <PillContainer
-                text="react"
-                backgroundColor={iconPillColor.react.bg}
-                fontColor={iconPillColor.react.fc}
-              />
-              <PillContainer
-                text="node.js"
-                backgroundColor={iconPillColor["node.js"].bg}
-                fontColor={iconPillColor["node.js"].fc}
-              />
-              <PillContainer
-                text="express"
-                backgroundColor={iconPillColor.express.bg}
-                fontColor={iconPillColor.express.fc}
-              />
-              <PillContainer
-                text="mongodb"
-                backgroundColor={iconPillColor.mongodb.bg}
-                fontColor={iconPillColor.mongodb.fc}
-              />
-            </div>
-          </div>
-        </section>
-        <HomeContent startAnimation={startAnimation} />
+          </section>
+          <HomeContent startAnimation={startAnimation} />
+        </div>
       </div>
-    </div>
+      <div className={aboutMeClasses.root}>
+        <Toolbar />
+        <header className={aboutMeClasses.header}>
+          <HeaderText>Don't Forget to Follow Me!</HeaderText>
+        </header>
+        <Toolbar />
+        <div className={aboutMeClasses.body}>
+          <AboutMeCard
+            title="Github"
+            subtitle="Come down to my Github to checkout my recent projects on full-stack
+          development and mobile app development."
+            link="https://github.com/sportsjay"
+          />
+          <AboutMeCard
+            title="LinkedIn"
+            subtitle="Connect with me through LinkedIn, I enjoy chatting with new people with different interests including, music, tech, weird humours, BASKETBALL!"
+            link="https://www.linkedin.com/in/jason-nathaniel-ab53a2193/"
+          />
+          <AboutMeCard
+            title="Hackerrank"
+            subtitle="Here's my spare time hobby, quite a nerd sometimes and I do enjoy some bits of problem solving!"
+            link="https://www.hackerrank.com/jasonnathaniel11"
+          />
+          <AboutMeCard
+            title="Spotify"
+            subtitle="Music, one of the best getaway! I've settled on 4 playlists for you guys to enjoy, making it from the 80's up to the latest hits."
+            link="https://open.spotify.com/embed/playlist/1k2RpXfwO7U0G0pZVjnMfe"
+          />
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 
@@ -334,5 +372,46 @@ const homePageStyles = makeStyles((theme) => ({
     "0%": { opacity: 0.3 },
     "50%": { opacity: 1 },
     "100%": { opacity: 0.3 },
+  },
+}));
+
+const aboutMeStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    minHeight: "100vh",
+    background:
+      "linear-gradient(107deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)",
+    padding: theme.spacing(2),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+    boxSizing: "border-box",
+  },
+  header: {
+    width: "50%",
+    fontSize: "32pt",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    position: "relative",
+    color: colors.white,
+    [theme.breakpoints.down("md")]: {
+      fontSize: "24pt",
+      width: "60%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "18pt",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      paddingTop: theme.spacing(2),
+    },
+  },
+  body: {
+    display: "flex",
+    gap: theme.spacing(6),
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexWrap: "wrap",
+      gap: theme.spacing(2),
+    },
   },
 }));

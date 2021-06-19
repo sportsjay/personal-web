@@ -222,7 +222,7 @@ const designContentStyles = makeStyles((theme) => ({
       transform: "translateY(0px)",
     },
     "50%": {
-      transform: "translateY(-20px)",
+      transform: "translateY(20px)",
     },
     "100%": {
       transform: "translateY(0px)",

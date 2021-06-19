@@ -1,23 +1,11 @@
 import React from "react";
-import { makeStyles, Card, CardHeader, Divider } from "@material-ui/core";
-import styled from "styled-components";
+import { makeStyles, CardHeader, Divider } from "@material-ui/core";
 
 // import colors
 import { colors, iconPillColor } from "../common";
 
 // import components
-import { Gutter, HeaderText, Text, PillContainer } from "../common";
-
-// import components
-
-const StyledCard = styled(Card)`
-  min-width: 260px;
-  width: 300px;
-  min-height: 280px;
-  height: 320px;
-  border-radius: 0;
-  background-color: ${colors.white};
-`;
+import { Gutter, HeaderText, Text, PillContainer, StyledCard } from "../common";
 
 export default function ProjectCard(props) {
   const cardClasses = cardStyles();
