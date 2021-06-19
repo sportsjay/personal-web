@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 
-import {
-  AppBar,
-  Toolbar,
-  makeStyles,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import { AppBar, Toolbar, makeStyles, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import styled from "styled-components";
 
 // import components
 import LinksContainer from "./linksContainer";
+import { HeaderText } from "../index";
 
 // import colors
-import { colors } from "../styles/colors";
-
-const Text = styled(Typography)`
-  font-weight: 800;
-  color: ${colors.black}; // black
-`;
+import { colors } from "../index";
 
 export default function Navigation(props) {
   const appBarClasses = appBarStyles();
@@ -28,12 +17,12 @@ export default function Navigation(props) {
 
   return (
     <React.Fragment>
-      <AppBar className={appBarClasses.root} variant="outlined">
+      <AppBar className={appBarClasses.root}>
         <Toolbar className={appBarClasses.toolbar}>
           <div className={appBarClasses.titleContainer}>
-            <Text variant="h5" className={appBarClasses.titleText}>
+            <HeaderText variant="h5" className={appBarClasses.titleText}>
               Jason Nathaniel
-            </Text>
+            </HeaderText>
             <span className={appBarClasses.burgerWrapper}>
               <IconButton onClick={() => setActiveNavbar(!activeNavbar)}>
                 <MenuIcon />
@@ -50,7 +39,7 @@ export default function Navigation(props) {
 
 const appBarStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "transparent",
+    backgroundColor: colors.milk,
     borderWidth: 0,
   },
   toolbar: {
@@ -65,19 +54,21 @@ const appBarStyles = makeStyles((theme) => ({
   },
   titleContainer: {
     display: "flex",
+    color: colors.black,
+    fontSize: "22pt",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       alignItems: "center",
       justifyContent: "flex-end",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "14pt",
     },
   },
   titleText: {
     [theme.breakpoints.down("sm")]: {
       width: "60%",
       textAlign: "center",
-    },
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "14pt",
     },
   },
   burgerWrapper: {

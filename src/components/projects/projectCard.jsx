@@ -1,10 +1,14 @@
 import React from "react";
 import { makeStyles, Card, CardHeader, Divider } from "@material-ui/core";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 // import colors
-import { colors, Gutter, HeaderText, Text } from "../common";
+import { colors, iconPillColor } from "../common";
+
+// import components
+import { Gutter, HeaderText, Text, PillContainer } from "../common";
+
+// import components
 
 const StyledCard = styled(Card)`
   min-width: 260px;
@@ -13,36 +17,6 @@ const StyledCard = styled(Card)`
   border-radius: 0;
   background-color: ${colors.white};
 `;
-
-function PillContainer(props) {
-  const pillContainerClasses = pillContainerStyles();
-  const { icon, text, backgroundColor, fontColor } = props;
-  return (
-    <div
-      {...props}
-      className={pillContainerClasses.root}
-      style={{
-        ...props.style,
-        backgroundColor: backgroundColor,
-        color: fontColor,
-      }}
-    >
-      <img
-        src={`${icon ? icon : text}.png`}
-        alt="None"
-        style={{ width: 20, height: 20, marginRight: 4 }}
-      />
-      <Text className={pillContainerClasses.text}>{text}</Text>
-    </div>
-  );
-}
-
-PillContainer.propTypes = {
-  icon: PropTypes.string,
-  text: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  fontColor: PropTypes.string,
-};
 
 export default function ProjectCard(props) {
   const cardClasses = cardStyles();
@@ -137,49 +111,3 @@ const cardStyles = makeStyles((theme) => ({
     maxHeight: 50,
   },
 }));
-
-const pillContainerStyles = makeStyles((theme) => ({
-  root: {
-    position: "relative",
-    minWidth: 70,
-    height: 30,
-    borderRadius: 5,
-    margin: 2,
-    padding: theme.spacing(1),
-    boxSizing: "border-box",
-    cursor: "pointer",
-    fontSize: "10pt",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    transition: "ease-out 0.2s",
-    "&:hover": {
-      transform: "scale(1.03)",
-    },
-    "&:active": {
-      filter: "brightness(80%)",
-    },
-  },
-  text: {
-    fontWeight: "600",
-    textTransform: "capitalize",
-    position: "relative",
-    zIndex: 1,
-  },
-}));
-
-// color code icons
-const iconPillColor = {
-  AWS: { bg: "#febd69", fc: "#7f4801" },
-  django: { bg: "#003b2b", fc: "#00e6a8" },
-  docker: { bg: "#0db7ed", fc: "#00664b" },
-  express: { bg: "white", fc: colors.black },
-  kubernetes: { bg: "#047adc", fc: "#9bd1fd" },
-  flutter: { bg: "#42a5f5", fc: "#085391" },
-  GCP: { bg: "#fbbc05", fc: "#7e5f02" },
-  kafka: { bg: "white", fc: colors.black },
-  mongodb: { bg: "#6cc24a", fc: "#326020" },
-  "node.js": { bg: "#6cc24a", fc: "#326020" },
-  react: { bg: "#00d8ff", fc: "#005766" },
-};

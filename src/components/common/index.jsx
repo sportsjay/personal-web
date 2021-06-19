@@ -1,10 +1,10 @@
 // import styles
-import { colors } from "./styles/colors";
+import { colors, iconPillColor } from "./styles/colors";
 
 // import typography
 import { Text, HeaderText } from "./typography";
 
 // import misc
-import { Gutter } from "./misc";
+import { Gutter, PillContainer } from "./misc";
 
-export { colors, Text, HeaderText, Gutter };
+export { colors, iconPillColor, Text, HeaderText, Gutter, PillContainer };
