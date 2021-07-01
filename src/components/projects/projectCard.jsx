@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, CardHeader, Divider } from "@material-ui/core";
+import { makeStyles, Divider } from "@material-ui/core";
 
 // import colors
 import { colors, iconPillColor } from "../common";
@@ -97,6 +97,6 @@ const cardStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     overflow: "auto",
     boxSizing: "border-box",
-    maxHeight: 50,
+    maxHeight: 40,
   },
 }));
