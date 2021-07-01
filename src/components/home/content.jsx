@@ -90,7 +90,7 @@ function Body(props) {
       <BodyComponent type="Header" />
       <BodyComponent type="Content" />
       <BodyComponent type="Content" />
-      <div style={{ gap: 10, display: "flex" }}>
+      <div style={{ gap: 10, display: "flex", justifyContent: "center" }}>
         <BodyComponent type="Content2" />
         <BodyComponent type="Content2" />
         <BodyComponent type="Content2" />
