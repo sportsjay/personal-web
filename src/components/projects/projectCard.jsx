@@ -1,64 +1,55 @@
 import React from "react";
-import { makeStyles, Card, CardHeader, Divider } from "@material-ui/core";
-import styled from "styled-components";
+import { makeStyles, Divider } from "@material-ui/core";
 
 // import colors
 import { colors, iconPillColor } from "../common";
 
 // import components
-import { Gutter, HeaderText, Text, PillContainer } from "../common";
-
-// import components
-
-const StyledCard = styled(Card)`
-  min-width: 260px;
-  width: 300px;
-  min-height: 280px;
-  height: 320px;
-  border-radius: 0;
-  background-color: ${colors.white};
-`;
+import { Gutter, HeaderText, Text, PillContainer, StyledCard } from "../common";
 
 export default function ProjectCard(props) {
   const cardClasses = cardStyles();
-  const techStacks = props.techStacks || ["AWS", "react"];
+  const { title, description, techStacks } = props;
   return (
-    <StyledCard {...props}>
-      <div className={cardClasses.topSection}>
-        <div className={cardClasses.topSectionBackground} />
-        <CardHeader
-          title={<HeaderText>Project Title {props.id}</HeaderText>}
-          className={cardClasses.cardHeader}
-        />
-        <div className={cardClasses.cardContent}>
-          <HeaderText>Description</HeaderText>
-          <Text className={cardClasses.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            magnam magni deleniti quas cumque vel suscipit at! Facere, et ad,
-            dolores dolorum eius sed autem distinctio nisi sit similique nihil.
-          </Text>
+    <div>
+      <StyledCard {...props}>
+        <div className={cardClasses.topSection}>
+          <div className={cardClasses.topSectionBackground} />
+          <header className={cardClasses.cardHeader}>
+            {<HeaderText>{title}</HeaderText>}
+          </header>
+          <div className={cardClasses.cardContent}>
+            <HeaderText>Description</HeaderText>
+            <Text className={cardClasses.description}>{description}</Text>
+          </div>
         </div>
-      </div>
-      <Divider />
-      <footer className={cardClasses.cardFooter}>
-        <Gutter
-          style={{ boxShadow: "rgba(33, 35, 38, 0.1) 0px 10px 10px -10px" }}
-        />
-        <div className={cardClasses.iconsContainer}>
-          {techStacks.map((techStack, idx) => (
-            <PillContainer
-              text={techStack}
-              key={idx * 1000}
-              backgroundColor={iconPillColor[techStack].bg}
-              fontColor={iconPillColor[techStack].fc}
-            />
-          ))}
-        </div>
-        <Gutter />
-      </footer>
-    </StyledCard>
+        <Divider />
+        <footer className={cardClasses.cardFooter}>
+          <Gutter />
+          <div className={cardClasses.iconsContainer}>
+            {techStacks.map((techStack, idx) => (
+              <PillContainer
+                text={techStack}
+                key={idx * 1000}
+                backgroundColor={iconPillColor[techStack].bg}
+                fontColor={iconPillColor[techStack].fc}
+              />
+            ))}
+          </div>
+          <Gutter />
+        </footer>
+      </StyledCard>
+      <Gutter />
+    </div>
   );
 }
+
+ProjectCard.defaultProps = {
+  title: "Project Title",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, maiores laborum enim explicabo quos sequi rem quia soluta tenetur voluptas. Beatae omnis ex reprehenderit praesentium nam ducimus accusantium assumenda facilis",
+  techStacks: ["AWS", "react", "kafka", "kafka"],
+};
 
 const cardStyles = makeStyles((theme) => ({
   topSection: {
@@ -88,26 +79,24 @@ const cardStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     paddingBottom: 0,
+    fontSize: "16pt",
+    padding: theme.spacing(2),
   },
   cardContent: {
     position: "relative",
     padding: theme.spacing(2),
     zIndex: 1,
   },
-  description: {
-    maxHeight: 120,
-    overflow: "auto",
-  },
+  description: { minHeight: 120, maxHeight: 120, overflow: "auto" },
   cardFooter: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    display: "block",
   },
   iconsContainer: {
     display: "flex",
     flexWrap: "wrap",
     overflow: "auto",
     boxSizing: "border-box",
-    maxHeight: 50,
+    maxHeight: 40,
   },
 }));
