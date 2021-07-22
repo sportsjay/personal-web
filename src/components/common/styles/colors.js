@@ -23,4 +23,7 @@ export const iconPillColor = {
   "node.js": { bg: "#6cc24a", fc: "#326020" },
   react: { bg: "#00d8ff", fc: "#005766" },
   "react-native": { bg: "#00d8ff", fc: "#005766" },
+  "nest.js": { bg: colors.black, fc: colors.white },
+  SQL: { bg: colors.milk, fc: colors.black },
+  heroku: { bg: "#D0B2FB", fc: colors.black },
 };

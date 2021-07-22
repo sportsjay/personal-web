@@ -107,7 +107,7 @@ export default function HomeContent(props) {
     <section
       className={designContentClasses.root}
       style={{
-        transition: "ease-out 5s",
+        transition: "opacity 5s",
         transitionDelay: "2s",
         opacity: startAnimation ? 1 : 0,
       }}
