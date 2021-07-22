@@ -10,6 +10,23 @@ import { colors } from "../common";
 
 const projects = [
   {
+    group: "Rigel Technologies (Internship) | Diglog (Startup)",
+    data: [
+      {
+        title: "Mobile FE",
+        description:
+          "I truly learned alot of software engineering practices through this experience supporting the Diglog project. I am grateful to have experience to quickly adapt in a new environment, although my flutter skills is quite rusty at the start, but I managed to pick up pace developing new features within a short period of time. I was able to experience SDLC (Software Development Life-Cycle) practice which helped improved my productivity.",
+        techStacks: ["flutter", "docker", "AWS"],
+      },
+      {
+        title: "Middleware",
+        description:
+          "I am glad that I took the opportunity requesting for additional task through backend development as I am also tasked to develop a new feature, might as well implement the whole system for efficiency. I also learnt TypeORM, AWS SES, and AWS SNS from this development which I am very grateful of!",
+        techStacks: ["nest.js", "docker", "AWS", "SQL"],
+      },
+    ],
+  },
+  {
     group: "IBM (Internship) | Enterprise Application",
     data: [
       {
@@ -63,12 +80,31 @@ const projects = [
         title: "GTD Unsolved",
         description:
           "A web-app dedicated to market my organisation's Escape Room game service. This project provides customer with the insights to our 3 chapter games and also allow them to directly register to join",
-        techStacks: ["node.js", "express", "react", "mongodb", "AWS"],
+        techStacks: ["react", "heroku"],
+      },
+      {
+        title: "GTD Unsolved Service",
+        description:
+          "This app serves as GTD Unsolved's backend service to store player registration data",
+        techStacks: ["express", "mongodb", "AWS", "node.js"],
       },
       {
         title: "GTD Website",
-        description: "On Progress...",
-        techStacks: ["react", "docker"],
+        description:
+          "This website is to dedicate all the hardworking personnels of GTD which they have all have earned acknowledgement. To bring the legacy of pass year events and also each fun memories. it is now available in https://pintugtd.com, go check it out!",
+        techStacks: ["react"],
+      },
+      {
+        title: "TTC Game Web-app",
+        description:
+          "This game platform is developed as a liaison with the Project Officers. We experimented on web-socket which bring forth the live changes through as a better gaming experience. Currently available on https://ttc-dev.herokuapp.com",
+        techStacks: ["react", "heroku"],
+      },
+      {
+        title: "TTC Game Service",
+        description:
+          "A Socket-based service developed to support TTC Game Web-app, serving the necessary user progress and game-related data",
+        techStacks: ["node.js", "express", "heroku", "mongodb"],
       },
     ],
   },
@@ -110,7 +146,7 @@ const projectStyles = makeStyles((theme) => ({
     backgroundAttachment: "scroll",
   },
   header: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(4),
     fontSize: "32pt",
     [theme.breakpoints.down("md")]: {
       fontSize: "24pt",
