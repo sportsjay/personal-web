@@ -265,6 +265,7 @@ const homePageStyles = makeStyles((theme) => ({
     boxSizing: "border-box",
     position: "relative",
     display: "flex",
+    flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
