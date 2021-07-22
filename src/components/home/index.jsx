@@ -155,7 +155,7 @@ export default function HomePage(props) {
           />
           <AboutMeCard
             title="LinkedIn"
-            subtitle="Connect with me through LinkedIn, I enjoy chatting with new people with different interests including, music, tech, weird humours, BASKETBALL!"
+            subtitle="Connect with me through LinkedIn, I enjoy chatting with new people about music, tech, weird humours, BASKETBALL!"
             link="https://www.linkedin.com/in/jason-nathaniel-ab53a2193/"
           />
           <AboutMeCard
