@@ -410,8 +410,8 @@ const aboutMeStyles = makeStyles((theme) => ({
     display: "flex",
     gap: theme.spacing(6),
     justifyContent: "center",
+    flexWrap: "wrap",
     [theme.breakpoints.down("sm")]: {
-      flexWrap: "wrap",
       gap: theme.spacing(2),
     },
   },

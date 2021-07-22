@@ -80,7 +80,6 @@ const cardStyles = makeStyles((theme) => ({
     justifyContent: "center",
     boxSizing: "inherit",
     height: "50%",
-
     fontSize: "16pt",
     [theme.breakpoints.down("sm")]: {
       fontSize: "12pt",
